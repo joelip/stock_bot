@@ -1,0 +1,29 @@
+{
+  "name": "stock_bot",
+  "version": "1.0.0",
+  "description": "Bot for checking on the stock of various items on different sites",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelip/stock_bot.git"
+  },
+  "author": "Joe Lipper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joelip/stock_bot/issues"
+  },
+  "homepage": "https://github.com/joelip/stock_bot#readme",
+  "dependencies": {
+    "@slack/web-api": "^5.12.0",
+    "dotenv": "^8.2.0",
+    "playwright": "^1.4.2",
+    "warning": "^4.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
