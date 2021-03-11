@@ -1,35 +1,33 @@
 const { chromium } = require('playwright');
 const SendSlackMessage = require('./slack');
-const roguePlateConfig = require('./site_configs').roguePlates;
+const elgatoConfig = require('./site_configs').elgatoRingLight;
 
 module.exports = async function () {
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
-  await page.goto(roguePlateConfig.url);
-  await page.waitForSelector(
-    roguePlateConfig.selectors.stockAvailabilityContainer
-  );
+  await page.goto(elgatoConfig.url);
+  await page.waitForSelector(elgatoConfig.selectors.stockAvailabilityContainer);
   const currentAvailabilityStatus = await page.$eval(
-    roguePlateConfig.selectors.stockAvailabilityContainer,
+    elgatoConfig.selectors.stockAvailabilityContainer,
     (node) => {
       return node.innerText;
     }
   );
   console.log(
     `${
-      roguePlateConfig.itemName
+      elgatoConfig.itemName
     } status as of ${new Date()} —— ${currentAvailabilityStatus}`
   );
   if (
-    roguePlateConfig.hasSentMessage === false &&
-    currentAvailabilityStatus !== roguePlateConfig.outOfStockString
+    elgatoConfig.hasSentMessage === false &&
+    currentAvailabilityStatus !== elgatoConfig.outOfStockString
   ) {
     console.log('Would have sent a message');
     await SendSlackMessage(
-      roguePlateConfig.changedMessage(),
-      roguePlateConfig.channelName
+      elgatoConfig.changedMessage(),
+      elgatoConfig.channelName
     );
-    roguePlateConfig.hasSentMessage = true;
+    elgatoConfig.hasSentMessage = true;
   }
   await browser.close();
 };
