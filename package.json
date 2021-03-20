@@ -4,7 +4,8 @@
   "description": "Bot for checking on the stock of various items on different sites",
   "main": "main.js",
   "scripts": {
-    "start": "nodemon main.js",
+    "start": "node main.js",
+    "start:watch": "nodemon main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
