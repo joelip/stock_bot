@@ -1,22 +1,33 @@
-const { chromium } = require('playwright');
+const { firefox } = require('playwright');
 const SendSlackMessage = require('./slack');
 
 module.exports = async function () {
-  const GENERAL_SUPPORT_SELECTOR =
-    '.themeLayoutStarterWrapper label:for(input[value="General Support"])';
-  const browser = await chromium.launch({ headless: false });
+  const Selectors = {
+    themeContainer: '.themeLayoutStarterWrapper',
+    radioInput: 'input',
+  };
+  const browser = await firefox.launch({ headless: false });
   const page = await browser.newPage();
+  const currentContext = browser.contexts()[0];
+  await currentContext.grantPermissions(['geolocation']);
+  await currentContext.setGeolocation({
+    latitude: 37.862161,
+    longitude: -122.283325,
+  });
   await page.goto('https://myturnvolunteer.ca.gov/s/schedule/#search');
-  await page.waitForSelector(GENERAL_SUPPORT_SELECTOR);
-  const $supportCheckboxLabel = await page.$(GENERAL_SUPPORT_SELECTOR);
-  await $supportCheckboxLabel.focus();
-  await $supportCheckboxLabel.check();
-  const checked = $supportCheckboxLabel.isChecked();
-  console.log(`Checked: ${checked}`);
-  // debugger;
-  await page.check(GENERAL_SUPPORT_SELECTOR);
-  // await $supportCheckboxLabel.click();
-  console.log($supportCheckboxLabel);
+  await page.waitForSelector(Selectors.themeContainer);
+  const $themeContainer = await page.$(Selectors.themeContainer);
+  const themeHTML = await $themeContainer.innerHTML();
+  const $supportRadio = await $themeContainer.$$(Selectors.radioInput);
+  const supportHTML = await $supportRadio[0].innerHTML();
+  // await $supportRadio.check();
+  // const checked = $supportRadio.isChecked();
+  // console.log(`Checked: ${checked}`);
+  // // debugger;
+  // await contentFrame.check(Selectors.radioInput);
+  // await $supportRadio.click();
+  // console.log(themeHTML);
+  console.log(supportHTML);
   // const currentAvailabilityStatus = await page.$eval(
   //   roguePlateConfig.selectors.stockAvailabilityContainer,
   //   (node) => {
@@ -39,5 +50,5 @@ module.exports = async function () {
   //   );
   //   roguePlateConfig.hasSentMessage = true;
   // }
-  // await browser.close();
+  await browser.close();
 };
