@@ -4,10 +4,9 @@ const ElgatoCrawlFn = require('./src/elgato');
 const myCAVaccineFn = require('./src/myca_vaccine');
 
 const run = async function () {
-  // RoguePlatesCrawlFn();
-  // ElgatoCrawlFn();
+  RoguePlatesCrawlFn();
+  ElgatoCrawlFn();
   myCAVaccineFn();
 };
-run();
 
-// cron.schedule('*/30 * * * * *', run);
+cron.schedule('*/30 * * * * *', run);
