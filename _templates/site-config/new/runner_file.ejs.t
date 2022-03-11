@@ -1,13 +1,18 @@
 ---
 to: src/<%= h.inflection.underscore(h.changeCase.lower(name)) %>.js
 ---
-const { chromium } = require('playwright');
+const { chromium, devices } = require('playwright');
 const SendSlackMessage = require('./slack');
-const <%= name %>Config = require('./site_configs').<%= name %>;
+const <%= name %>Config = require('./site_configs').<%= h.inflection.underscore(h.changeCase.lower(name)) %>;
+const iPhone = devices['iPhone 11 Pro'];
 
 module.exports = async function () {
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage();
+  const context = await browser.newContext({
+    ...iPhone,
+    javaScriptEnabled: false
+  });
+  const page = await context.newPage();
   await page.goto(<%= name %>Config.url);
   await page.waitForSelector(<%= name %>Config.selectors.stockAvailabilityContainer);
   const currentAvailabilityStatus = await page.$eval(
