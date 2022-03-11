@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "nodemon main.js",
+    "hygen": "./node_modules/.bin/hygen",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,10 +22,11 @@
     "@slack/web-api": "^5.12.0",
     "dotenv": "^8.2.0",
     "node-cron": "^2.0.3",
-    "playwright": "^1.9.0",
+    "playwright": "^1.17.0",
     "warning": "^4.0.3"
   },
   "devDependencies": {
+    "hygen": "^6.2.0",
     "nodemon": "^2.0.4"
   }
 }
