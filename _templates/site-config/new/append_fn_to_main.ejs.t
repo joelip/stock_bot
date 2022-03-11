@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/run.js
+to: main.js
 after: const\ run\ \=\ async\ function\ \(\)\ \{
 skip_if: <%= Name %>Fn\(\)
 ---
