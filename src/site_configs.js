@@ -14,6 +14,16 @@ class SiteConfig {
 }
 
 module.exports = {
+  targetps5: new SiteConfig(
+    'https://www.target.com/c/playstation-5-video-games/-/N-hj96d',
+    '#other',
+    'Target PS5 Landing Page',
+    {
+      stockAvailabilityContainer:
+        '.CBMCR.h-text-center p',
+    },
+    'Consoles will be viewable when inventory is available.'
+  ),
   bestbuyps5digital: new SiteConfig(
     'https://www.bestbuy.com/site/sony-playstation-5-digital-edition-console/6430161.p?skuId=6430161',
     '#other',

@@ -6,6 +6,7 @@
   "scripts": {
     "start:dev": "nodemon main.js",
     "start": "node main.js",
+    "runfn": "node ./src/run.js",
     "hygen": "./node_modules/.bin/hygen",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
