@@ -14,6 +14,16 @@ class SiteConfig {
 }
 
 module.exports = {
+  bestbuyps5disc: new SiteConfig(
+    'https://www.bestbuy.com/site/sony-playstation-5-console/6426149.p?skuId=6426149',
+    '#other',
+    'Best Buy PS5 Disc',
+    {
+      stockAvailabilityContainer:
+        '.fulfillment-add-to-cart-button button',
+    },
+    'Sold Out'
+  ),
   topShot: new SiteConfig(
     'https://www.nbatopshot.com/packs',
     '#nba-top-shot',

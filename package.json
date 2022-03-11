@@ -4,7 +4,8 @@
   "description": "Bot for checking on the stock of various items on different sites",
   "main": "main.js",
   "scripts": {
-    "start": "nodemon main.js",
+    "start:dev": "nodemon main.js",
+    "start": "node main.js",
     "hygen": "./node_modules/.bin/hygen",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

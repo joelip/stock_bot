@@ -1,10 +1,8 @@
 const cron = require('node-cron');
-const RoguePlatesCrawlFn = require('./src/rogue');
-const ElgatoCrawlFn = require('./src/elgato');
+const BestBuyPS5DiscFn = require('./src/bestbuyps5disc.js')
 
 const run = async function () {
-  RoguePlatesCrawlFn();
-  ElgatoCrawlFn();
+  BestBuyPS5DiscFn();
 };
 
-cron.schedule('*/30 * * * * *', run);
+cron.schedule('*/10 * * * * *', run);
