@@ -14,6 +14,16 @@ class SiteConfig {
 }
 
 module.exports = {
+  playstationsiteps5: new SiteConfig(
+    'https://direct.playstation.com/en-us/consoles/console/playstation5-console.3006646',
+    '#other',
+    'Direct Playstation Site PS5',
+    {
+      stockAvailabilityContainer:
+        '.productHero-info .button-placeholder',
+    },
+    'Out of Stock'
+  ),
   targetps5: new SiteConfig(
     'https://www.target.com/c/playstation-5-video-games/-/N-hj96d',
     '#other',
