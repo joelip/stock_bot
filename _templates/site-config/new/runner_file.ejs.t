@@ -1,5 +1,5 @@
 ---
-to: src/<%= h.inflection.underscore(h.changeCase.lower(name)) %>.js
+to: src/crawlers/<%= h.inflection.underscore(h.changeCase.lower(name)) %>.js
 ---
 const { chromium, devices } = require('playwright');
 const SendSlackMessage = require('./slack');
