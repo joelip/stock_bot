@@ -11,4 +11,4 @@ const run = async function () {
   BestBuyPS5DigitalFn();
 };
 
-cron.schedule('*/10 * * * * *', run);
+cron.schedule('*/30 * * * * *', run);
