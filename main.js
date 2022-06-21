@@ -1,8 +1,8 @@
 const cron = require('node-cron');
-const PlaystationSitePS5Fn = require('./src/playstationsiteps5.js');
-const TargetPS5Fn = require('./src/targetps5.js');
-const BestBuyPS5DigitalFn = require('./src/bestbuyps5digital.js');
-const BestBuyPS5DiscFn = require('./src/bestbuyps5disc.js');
+const PlaystationSitePS5Fn = require('./src/crawlers/playstationsiteps5.js');
+const TargetPS5Fn = require('./src/crawlers/targetps5.js');
+const BestBuyPS5DigitalFn = require('./src/crawlers/bestbuyps5digital.js');
+const BestBuyPS5DiscFn = require('./src/crawlers/bestbuyps5disc.js');
 
 const run = async function () {
   PlaystationSitePS5Fn();

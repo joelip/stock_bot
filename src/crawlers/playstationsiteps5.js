@@ -1,6 +1,6 @@
 const { chromium, devices } = require('playwright');
-const SendSlackMessage = require('./slack');
-const PlaystationSitePS5Config = require('./site_configs').playstationsiteps5;
+const SendSlackMessage = require('../slack');
+const PlaystationSitePS5Config = require('../site_configs').playstationsiteps5;
 const iPhone = devices['iPhone 11 Pro'];
 
 module.exports = async function () {

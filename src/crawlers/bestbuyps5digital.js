@@ -1,6 +1,6 @@
 const { chromium, devices } = require('playwright');
-const SendSlackMessage = require('./slack');
-const TargetPS5Config = require('./site_configs').targetps5;
+const SendSlackMessage = require('../slack');
+const BestBuyPS5DigitalConfig = require('../site_configs').bestbuyps5digital;
 const iPhone = devices['iPhone 11 Pro'];
 
 module.exports = async function () {
@@ -11,31 +11,31 @@ module.exports = async function () {
       javaScriptEnabled: false,
     });
     const page = await context.newPage();
-    await page.goto(TargetPS5Config.url);
+    await page.goto(BestBuyPS5DigitalConfig.url);
     await page.waitForSelector(
-      TargetPS5Config.selectors.stockAvailabilityContainer
+      BestBuyPS5DigitalConfig.selectors.stockAvailabilityContainer
     );
     const currentAvailabilityStatus = await page.$eval(
-      TargetPS5Config.selectors.stockAvailabilityContainer,
+      BestBuyPS5DigitalConfig.selectors.stockAvailabilityContainer,
       (node) => {
         return node.innerText;
       }
     );
     console.log(
       `${
-        TargetPS5Config.itemName
+        BestBuyPS5DigitalConfig.itemName
       } status as of ${new Date()} —— ${currentAvailabilityStatus}`
     );
     if (
-      TargetPS5Config.hasSentMessage === false &&
-      currentAvailabilityStatus !== TargetPS5Config.outOfStockString
+      BestBuyPS5DigitalConfig.hasSentMessage === false &&
+      currentAvailabilityStatus !== BestBuyPS5DigitalConfig.outOfStockString
     ) {
       console.log('Would have sent a message');
       await SendSlackMessage(
-        TargetPS5Config.changedMessage(),
-        TargetPS5Config.channelName
+        BestBuyPS5DigitalConfig.changedMessage(),
+        BestBuyPS5DigitalConfig.channelName
       );
-      TargetPS5Config.hasSentMessage = true;
+      BestBuyPS5DigitalConfig.hasSentMessage = true;
     }
     await browser.close();
   } catch (error) {
